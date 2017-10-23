@@ -1,0 +1,8 @@
+<?xml version='1.0' ?>
+  <users>
+          <user name="fedoraAdmin" password="{{ getenv "FEDORA_ADMIN_PASSWORD" | html }}">
+      <attribute name="fedoraRole">
+        <value>administrator</value>
+      </attribute>
+    </user>
+  </users>

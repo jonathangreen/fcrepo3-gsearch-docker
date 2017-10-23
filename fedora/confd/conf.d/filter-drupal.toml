@@ -1,0 +1,5 @@
+[template]
+src = "filter-drupal.xml"
+dest = "/opt/fedora/server/config/filter-drupal.xml"
+group = "tomcat7"
+owner = "tomcat7"

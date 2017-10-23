@@ -1,0 +1,5 @@
+[template]
+src = "fedora.fcfg"
+dest = "/opt/fedora/server/config/fedora.fcfg"
+group = "tomcat7"
+owner = "tomcat7"

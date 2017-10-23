@@ -1,0 +1,5 @@
+[template]
+src = "fedora-users.xml"
+dest = "/opt/fedora/server/config/fedora-users.xml"
+group = "tomcat7"
+owner = "tomcat7"
