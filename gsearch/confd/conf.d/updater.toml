@@ -1,0 +1,5 @@
+[template]
+src = "updater.properties"
+dest = "/var/lib/tomcat7/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/updater/FgsUpdaters/updater.properties"
+group = "tomcat7"
+owner = "tomcat7"

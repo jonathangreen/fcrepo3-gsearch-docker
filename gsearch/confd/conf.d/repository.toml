@@ -1,0 +1,5 @@
+[template]
+src = "repository.properties"
+dest = "/var/lib/tomcat7/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/repository/FgsRepos/repository.properties"
+group = "tomcat7"
+owner = "tomcat7"
