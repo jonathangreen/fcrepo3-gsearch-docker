@@ -1,4 +1,4 @@
-FROM lyrasis-fedora:fedora
+FROM jonathangreen/fcrepo3-gsearch:fedora
 MAINTAINER Jonathan Green <jonathan@razzard.com>
 
 COPY . /opt/gsearch_docker

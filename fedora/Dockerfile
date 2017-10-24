@@ -1,4 +1,4 @@
-FROM lyrasis-fedora:base
+FROM jonathangreen/fcrepo3-gsearch:base
 MAINTAINER Jonathan Green <jonathan@razzard.com>
 
 ENV FEDORA_HOME=/opt/fedora \
