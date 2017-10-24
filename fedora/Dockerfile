@@ -19,28 +19,32 @@ ENV FEDORA_HOME=/opt/fedora \
 
 COPY . /opt/fedora_docker
 
-RUN chown -R tomcat7:tomcat7 /opt; \ 
-  apt-get update; \
-  apt-get install -y --no-install-recommends unzip; \
-  rm -rf /var/lib/apt/lists/*; \
-  mv /opt/fedora_docker/confd/templates/* /etc/confd/templates/; \
+# Install some required packages
+RUN apk add --no-cache \
+    unzip \
+    ca-certificates \
+    openssl && \
+    update-ca-certificates
+
+# Install confd for templating our configuration
+RUN mv /opt/fedora_docker/confd/templates/* /etc/confd/templates/; \
   mv /opt/fedora_docker/confd/conf.d/* /etc/confd/conf.d/; \
   chmod +x /opt/fedora_docker/start.sh
 
-USER tomcat7:tomcat7
-
 # Install Fedora Commons 3
-RUN wget --no-check-certificate -P /opt/fedora_docker http://downloads.sourceforge.net/fedora-commons/fcrepo-installer-3.8.1.jar;\
+RUN wget -P /opt/fedora_docker/ https://downloads.sourceforge.net/project/fedora-commons/fedora/3.8.1/fcrepo-installer-3.8.1.jar; \
   yes | java -jar /opt/fedora_docker/fcrepo-installer-3.8.1.jar /opt/fedora_docker/files/install.properties; \
   rm -Rf /opt/fedora/install; \
+  rm -Rf /opt/fedora/docs; \
   rm /opt/fedora_docker/fcrepo-installer-3.8.1.jar; \
-  unzip /var/lib/tomcat7/webapps/fedora.war -d /var/lib/tomcat7/webapps/fedora; \
-  rm /var/lib/tomcat7/webapps/fedora.war; \
+  unzip $CATALINA_HOME/webapps/fedora.war -d $CATALINA_HOME/webapps/fedora; \
+  rm $CATALINA_HOME/webapps/fedora.war; \
   mv /opt/fedora_docker/files/logback.xml /opt/fedora/server/config/logback.xml; \
   mv /opt/fedora_docker/xacml /opt/fedora/xacml; \
-  wget --no-check-certificate -P /var/lib/tomcat7/webapps/fedora/WEB-INF/lib/ https://github.com/Islandora/islandora_drupal_filter/releases/download/v7.1.3/fcrepo-drupalauthfilter-3.8.1.jar; \
+  wget https://github.com/Islandora/islandora_drupal_filter/releases/download/v7.1.3/fcrepo-drupalauthfilter-3.8.1.jar -P $CATALINA_HOME/webapps/fedora/WEB-INF/lib/; \
   mv /opt/fedora_docker/files/jaas.conf /opt/fedora/server/config/jaas.conf
 
+# Expose port 8080 and start tomcat
 WORKDIR /opt/fedora_docker
 EXPOSE 8080
 CMD ["./start.sh"]

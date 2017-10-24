@@ -1,5 +1,5 @@
 [template]
 src = "fedoragsearch.properties"
-dest = "/var/lib/tomcat7/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/fedoragsearch.properties"
+dest = "/usr/local/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/fedoragsearch.properties"
 group = "tomcat7"
 owner = "tomcat7"
