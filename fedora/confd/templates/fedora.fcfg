@@ -128,7 +128,7 @@
     <param name="XACML-COMBINING-ALGORITHM" value="org.jboss.security.xacml.sunxacml.combine.OrderedDenyOverridesPolicyAlg"/>
     <param name="VALIDATE-OBJECT-POLICIES-FROM-FILE" value="false"/>
     <param name="VALIDATE-REPOSITORY-POLICIES" value="true"/>
-    <param name="REPOSITORY-POLICIES-DIRECTORY" value="xacml/repository-policies" isFilePath="true"/>
+    <param name="REPOSITORY-POLICIES-DIRECTORY" value="/xacml" isFilePath="true"/>
   </module>
   <module role="org.fcrepo.server.security.BackendSecurity" class="org.fcrepo.server.security.DefaultBackendSecurity">
     <comment>Description: Interface to the backend service security
